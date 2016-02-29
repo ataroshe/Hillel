@@ -1,10 +1,18 @@
 package geometry;
 
 public class Circle {
+    private double radius;
+    private double area;
 
-    public static double circleArea(double circleRadius) {
-        double area = Math.PI * (Math.pow(circleRadius, 2));
-        return area;
+    public Circle(double radius) {
+        this.radius = radius;
     }
 
+    public void circleArea() {
+        area = Math.PI * (Math.pow(radius, 2));
+    }
+
+    public double getArea() {
+        return area;
+    }
 }
