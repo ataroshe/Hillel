@@ -7,19 +7,19 @@ public class RectangleExample {
     public static void main(String[] args) {
 
         Rectangle firstRectangle = new Rectangle();
-        firstRectangle.heigth = 2;
-        firstRectangle.width = 3;
-        firstRectangle.color = "Blue";
+        firstRectangle.setHeigth(2);
+        firstRectangle.setHeigth(3);
+        firstRectangle.setColor("Blue");
         //int a = firstRectangle.heigth;
 
         int a = firstRectangle.calculateArea();
 
         System.out.println(a);
-        System.out.println(firstRectangle.color);
+        System.out.println(firstRectangle.getColor());
 
         Rectangle secondRectangle = new Rectangle();
-        secondRectangle.heigth = 5;
-        secondRectangle.width = 10;
+        secondRectangle.setHeigth(5);
+        secondRectangle.setWidth(10);
 
 
         secondRectangle.calculateArea();
@@ -34,11 +34,11 @@ public class RectangleExample {
 
         System.out.println(area);
 
-        firstRectangle.width = 4;
+        firstRectangle.setWidth(4);
 
         System.out.println("the first rectangle is " + firstRectangle);
 
-        Rectangle anotherRectangle = new Rectangle(firstRectangle.width, firstRectangle.heigth);
+        Rectangle anotherRectangle = new Rectangle(firstRectangle.getWidth(), firstRectangle.getHeigth());
 
         System.out.println("the  another rect is: " + anotherRectangle.toString());
 
@@ -52,7 +52,7 @@ public class RectangleExample {
     }
 
     public static int calsulateArea(Rectangle rectangle) {
-        return rectangle.heigth * rectangle.width;
+        return rectangle.getHeigth() * rectangle.getWidth();
     }
 
 }
