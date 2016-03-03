@@ -2,7 +2,7 @@ package Crypt;
 
 public class Encrypt {
 
-    char[] key = new char[5];
+    private char[] key = new char[5];
 
     public Encrypt(char[] key) {
         this.key = key;
