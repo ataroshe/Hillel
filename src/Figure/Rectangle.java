@@ -27,6 +27,7 @@ public class Rectangle {
     }
 
     public boolean equals(Rectangle other){
+
         return  width == other.width && heigth == other.heigth;
     }
 
