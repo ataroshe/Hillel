@@ -1,3 +1,5 @@
+import Figure.Cat;
+
 import java.util.Arrays;
 
 /**
@@ -27,6 +29,9 @@ public class Sorter {
     public static void main(String[] args) {
         int[] a = {9,5,8,4,3,7};
         String[] b = {"a", "c", "b", "d"};
+        Cat[] cats = new Cat[0];
+        Cat cat1 = new Cat("asd", "dfdf", 10);
+        Cat cat2 = new Cat("asd", "dfdf", 10);
         new Sorter().sort(b);
         System.out.println(Arrays.toString(b));
     }
