@@ -1,4 +1,4 @@
-package pattern.quack;
+package pattern.strategy.quack;
 
 /**
  * Created by User on 15.03.2016.

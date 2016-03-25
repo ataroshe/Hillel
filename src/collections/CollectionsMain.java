@@ -10,6 +10,43 @@ import java.util.*;
  */
 public class CollectionsMain {
     public static void main(String[] args) {
+        HashSet<Cat> set = new HashSet<>();
+
+        Cat cat1 = new Cat("tom", "grey", 2015);
+        set.add(cat1);
+
+        Cat cat2 = new Cat("tom", "grey", 2015);
+        set.add(new Cat("Murzik", "grey", 2015));
+        set.add(new Cat("Timka", "grey", 2015));
+        set.add(new Cat("HZ", "grey", 2015));
+
+
+
+
+        System.out.println("equals: " + cat1.equals(cat2));
+        System.out.println("Hash: " + cat1.hashCode());
+        System.out.println("Hash: " + cat2.hashCode());
+
+        System.out.println("can1 in set: : " + set.contains(cat1));
+        System.out.println("can1 in set: : " + set.contains(cat2));
+
+        ArrayList<Cat> list = new ArrayList<>();
+        list.add(cat1);
+        System.out.println("cat2 in list: " + list.contains(cat2)) ;
+
+
+//        cat1.setName("Barsik");
+        System.out.println("hash for barsik" + cat1.hashCode());
+
+        System.out.println("Barsik in set: " + set.contains(cat1));
+
+        for (Cat cat: set) {
+            System.out.println(cat);
+        }
+
+    }
+
+    private static void lists() {
         ArrayList<Cat> list = new ArrayList<>();
         list.add(new Cat("tom", "grey", 2015));
         list.add(new Cat("ton", "grey", 2015));

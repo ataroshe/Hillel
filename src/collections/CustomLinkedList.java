@@ -1,9 +1,13 @@
 package collections;
 
+import pattern.iterator.CustomLinkedListIterator;
+
+import java.util.Iterator;
+
 /**
  * Created by User on 22.03.2016.
  */
-public class CustomLinkedList {
+public class CustomLinkedList implements Iterable{
 
     private ListElement next;
 
@@ -33,5 +37,9 @@ public class CustomLinkedList {
         else {
             return next.get(index);
         }
+    }
+
+    public Iterator iterator(){
+        return new CustomLinkedListIterator(next);
     }
 }

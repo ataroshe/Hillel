@@ -1,5 +1,7 @@
 package Figure;
 
+import java.util.Arrays;
+
 /**
  * Created by User on 26.02.2016.
  */
@@ -11,11 +13,11 @@ public class Cat implements Comparable {
     private int vaccinesCount;
 
     public Cat(String name, String color, int birthYear) {
-        System.out.println("cat is creating");
+//        System.out.println("cat is creating");
         this.name = name;
         this.color = color;
         this.birthYear = birthYear;
-        System.out.println("cat created");
+//        System.out.println("cat created");
     }
 
 
@@ -76,16 +78,21 @@ public class Cat implements Comparable {
         Cat cat = (Cat) o;
 
         if (birthYear != cat.birthYear) return false;
-        if (!color.equals(cat.color)) return false;
-        return name.equals(cat.name);
+        if (vaccinesCount != cat.vaccinesCount) return false;
+        if (color != null ? !color.equals(cat.color) : cat.color != null) return false;
+        if (name != null ? !name.equals(cat.name) : cat.name != null) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(vaccines, cat.vaccines);
 
     }
 
     @Override
     public int hashCode() {
-        int result = color.hashCode();
-        result = 31 * result + name.hashCode();
+        int result = color != null ? color.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + birthYear;
+        result = 31 * result + Arrays.hashCode(vaccines);
+        result = 31 * result + vaccinesCount;
         return result;
     }
 }
