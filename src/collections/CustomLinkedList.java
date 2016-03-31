@@ -1,8 +1,10 @@
 package collections;
 
 import pattern.iterator.CustomLinkedListIterator;
+import com.sun.org.apache.xalan.internal.xsltc.dom.ClonedNodeListIterator;
 
 import java.util.Iterator;
+
 
 /**
  * Created by User on 22.03.2016.
@@ -39,7 +41,9 @@ public class CustomLinkedList implements Iterable{
         }
     }
 
+    @Override
     public Iterator iterator(){
         return new CustomLinkedListIterator(next);
     }
+
 }

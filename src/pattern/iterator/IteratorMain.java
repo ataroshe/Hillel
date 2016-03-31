@@ -24,22 +24,31 @@ public class IteratorMain {
         linkedList.add(new Cat("Tom", "Grey", 2015));
 
         Iterator linkedListIterator = linkedList.iterator();
+
         iterate(linkedListIterator);
+
+        for (Object o : linkedList) {
+            System.out.println(o);
+        }
     }
 
+    public static void iterate(Iterable iterable){
+        Iterator iterator = iterable.iterator();
+        iterate(iterator);
+    }
 
-    public static void iterate(Iterator iterator){
-        while (iterator.hasNext());
+    public static void iterate(Iterator iterator) {
+        while (iterator.hasNext()) ;
         System.out.println(iterator.next());
     }
 
-    public static void iterate(ArrayList<Integer> integers){
+    public static void iterate(ArrayList<Integer> integers) {
         for (int i = 0; i < integers.size(); i++) {
             System.out.println(integers.get(i));
         }
     }
 
-    public static void iterate(Integer[] integers){
+    public static void iterate(Integer[] integers) {
         for (int i = 0; i < integers.length; i++) {
             System.out.println(integers[i]);
         }

@@ -11,6 +11,11 @@ public class Person {
     }
 
 
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
     /**
      * * this constructor creates person with name
      * @param name person's name
