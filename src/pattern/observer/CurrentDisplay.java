@@ -3,7 +3,7 @@ package pattern.observer;
 /**
  * Created by User on 29.03.2016.
  */
-public class CurrentDisplay {
+public class CurrentDisplay implements Observer{
     private int temperature;
     private int humidity;
     private int preassure;
@@ -13,6 +13,7 @@ public class CurrentDisplay {
 
     }
 
+    @Override
     public void update(int temperature, int humidity, int preassure){
         this.preassure = preassure;
         this.humidity = humidity;
