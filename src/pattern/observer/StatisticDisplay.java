@@ -12,10 +12,10 @@ public class StatisticDisplay implements Observer{
     private List<Integer> preassures = new ArrayList<Integer>();
 
     @Override
-    public void update(int temperature, int humidity, int preassure){
-        temperatures.add(temperature);
-        humidities.add(humidity);
-        preassures.add(preassure);
+    public void update(WeatherStation station){
+        temperatures.add(station.getTemperature());
+        humidities.add(station.getHumidity());
+        preassures.add(station.getPreassure());
     }
 
     public void display(){

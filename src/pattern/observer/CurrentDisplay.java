@@ -14,9 +14,9 @@ public class CurrentDisplay implements Observer{
     }
 
     @Override
-    public void update(int temperature, int humidity, int preassure){
-        this.preassure = preassure;
-        this.humidity = humidity;
-        this.temperature = temperature;
+    public void update(WeatherStation station){
+        this.preassure = station.getPreassure();
+        this.humidity = station.getHumidity();
+        this.temperature = station.getTemperature();
     }
 }

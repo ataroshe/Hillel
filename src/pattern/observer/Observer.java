@@ -5,5 +5,5 @@ package pattern.observer;
  */
 public interface Observer {
 
-    void update(int temperature, int humidity, int preassure);
+    void update(WeatherStation station);
 }
