@@ -1,5 +1,6 @@
 package collections;
 
+import exceptions.MyOwnOutOfIndexException;
 import pattern.iterator.CustomLinkedListIterator;
 import com.sun.org.apache.xalan.internal.xsltc.dom.ClonedNodeListIterator;
 
@@ -32,12 +33,17 @@ public class CustomLinkedList implements Iterable{
 
     }
 
-    public Object get(int index){
+    public Object get(int index) throws MyOwnOutOfIndexException{
         if (next == null) {
-            return null;
+            throw new MyOwnOutOfIndexException("size = " + size() + "index = " + index);
         }
         else {
-            return next.get(index);
+            try{
+                return next.get(index);
+            }catch (IndexOutOfBoundsException e) {
+                throw new MyOwnOutOfIndexException("size = " + size() + "index = " + index);
+            }
+
         }
     }
 
