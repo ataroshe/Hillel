@@ -1,10 +1,13 @@
 package IO;
 
+import inheritance.hierarce.Person;
+
 import javax.xml.crypto.dsig.dom.DOMSignContext;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Properties;
 
 /**
  * Created by User on 15.04.2016.
@@ -12,10 +15,61 @@ import java.nio.file.Paths;
 public class IoMain {
     public static void main(String[] args) {
 
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("myFolder/car.dat"))) {
+            Car myCar = new Car ("BMW", 1985, new Person("Ivan"));
+            myCar.setRentor(new Rentor("Nikolay"));
+            outputStream.writeObject(myCar);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        dataWrite();
+        try(ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("myFolder/car.dat"))) {
+            Car myCar = (Car) objectInputStream.readObject();
+            System.out.println(myCar.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private static void propertiesExample() {
+        Properties properties = new Properties();
+        try (FileInputStream inputStream = new FileInputStream("myFolder/settings.properties")){
+            properties.load(inputStream);
+            String db = properties.getProperty("DB");
+            String password = properties.getProperty("password");
+            int timeout = Integer.parseInt(properties.getProperty("timeout"));
 
+            System.out.println(db + " " + password + " " + timeout);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void objectsExample() {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("myFolder/object.dat"))) {
+            int[] date = new int[] {15, 4, 2016};
+            outputStream.writeObject(date);
+            outputStream.writeObject("Hello");
+            outputStream.writeObject(1);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("myFolder/object.dat"))) {
+            int[] date = (int[]) inputStream.readObject();
+            String someStr = (String) inputStream.readObject();
+            Integer someInteger = (Integer) inputStream.readObject();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void dataWrite() {

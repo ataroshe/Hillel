@@ -1,9 +1,11 @@
 package inheritance.hierarce;
 
+import java.io.Serializable;
+
 /**
  * Created by User on 04.03.2016.
  */
-public class Person {
+public class Person implements Serializable {
     private String name;
 
     @Deprecated
