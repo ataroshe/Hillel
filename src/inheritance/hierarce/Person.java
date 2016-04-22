@@ -1,5 +1,7 @@
 package inheritance.hierarce;
 
+import IO.Car;
+
 import java.io.Serializable;
 
 /**
@@ -7,9 +9,11 @@ import java.io.Serializable;
  */
 public class Person implements Serializable {
     private String name;
+    private Car car;
 
     @Deprecated
     public Person() {
+        System.out.println("in defaultperson constructor");
     }
 
 
@@ -25,6 +29,7 @@ public class Person implements Serializable {
 
     public Person(String name) {
         this.name = name;
+        System.out.println("in person constructor with 1 parameter");
     }
 
     public String getName(){
@@ -33,6 +38,18 @@ public class Person implements Serializable {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public boolean hasCar(){
+        return car != null;
     }
 
     public void greeting(){
