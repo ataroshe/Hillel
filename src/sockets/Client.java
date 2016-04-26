@@ -14,7 +14,7 @@ public class Client {
     public void start() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            String message = scanner.next();
+            String message = scanner.nextLine();
             if (message.equals("exit")) {
                 break;
             }
@@ -26,7 +26,7 @@ public class Client {
         try (Socket socket = new Socket("192.168.1.111", 3502);
              PrintWriter writer = new PrintWriter(socket.getOutputStream())) {
 
-            writer.print(message);
+            writer.print(message + "+");
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();

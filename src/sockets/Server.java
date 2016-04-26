@@ -30,7 +30,9 @@ public class Server {
                 try {
                     String message = reader.readLine();
                     rememberName(socket, message);
+
                     String name = getName(socket);
+
                     System.out.println(name + " :  " + message);
                 } catch (IOException ignore) {
                 }
