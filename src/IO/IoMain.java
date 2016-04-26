@@ -30,7 +30,7 @@ public class IoMain {
 
     public static void save(Car car) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("myFolder/car.dat"))) {
-           outputStream.writeObject(car);
+            outputStream.writeObject(car);
         } catch (IOException e) {
             e.printStackTrace();
         }

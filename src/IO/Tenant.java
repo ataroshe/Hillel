@@ -1,9 +1,7 @@
 package IO;
 
-import java.io.Serializable;
-
 /**
- * Created by User on 19.04.2016.
+ * Created by MBCNEWMAIN on 19.04.2016.
  */
 public class Tenant {
     private String name;

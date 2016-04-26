@@ -5,46 +5,41 @@ import IO.Car;
 import java.io.Serializable;
 
 /**
- * Created by User on 04.03.2016.
+ * Created by MBCNEWMAIN on 04.03.2016.
  */
-public class Person implements Serializable {
+public class Person extends Object implements Serializable {
     private String name;
+
     private Car car;
 
     @Deprecated
     public Person() {
-        System.out.println("in defaultperson constructor");
-    }
-
-
-    @Override
-    public int hashCode() {
-        return name.hashCode();
+        System.out.println("in default person constructor");
     }
 
     /**
-     * * this constructor creates person with name
+     * this constructor creates person with name
+     *
      * @param name person's name
      */
-
     public Person(String name) {
+        System.out.println("in person constructor with one parameter");
         this.name = name;
-        System.out.println("in person constructor with 1 parameter");
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setCar(Car car) {
+    public void setCar(Car car){
         this.car = car;
     }
 
-    public Car getCar() {
+    public Car getCar(){
         return car;
     }
 
@@ -52,12 +47,12 @@ public class Person implements Serializable {
         return car != null;
     }
 
-    public void greeting(){
-        System.out.println("Hello, I'm a person, my name is " + getName());
+    public void greeting() {
+        System.out.println("Hello, I'm a person. My name is " + getName());
     }
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         if (!(o instanceof Person)) {
             return false;
         }
@@ -66,9 +61,12 @@ public class Person implements Serializable {
     }
 
     @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
+
+    @Override
     public String toString() {
         return "I'm person, my name is " + getName();
     }
-
-
 }
