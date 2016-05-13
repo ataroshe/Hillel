@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.bank;
 
 import pattern.observer.Observer;
 
@@ -9,15 +9,13 @@ public class Bank {
     private long account1 = 10_000_000;
     private long account2 = 10_000_000;
 
-    final Object lock = new Object();
-
     public synchronized void transfer(boolean direction, int amount) {
         if (direction) {
             account1 -= amount;
             account2 += amount;
         } else {
-            account1 += amount;
             account2 -= amount;
+            account1 += amount;
         }
     }
 
@@ -27,12 +25,13 @@ public class Bank {
         if (account1 + account2 != 20_000_000) {
             message = "Something wrong happened!";
         }
-        message += "Account 1 = " + account1;
-        message += "Account 2 = " + account2;
+        message += " Account1: " + account1;
+        message += " Account2: " + account2;
 
         System.out.println(message);
-
     }
 
-
+    public void sayHallo(){
+        System.out.println("hallo!");
+    }
 }

@@ -1,11 +1,11 @@
-package multithreading;
+package multithreading.bank;
 
 import java.util.Random;
 
 /**
  * Created by User on 29.04.2016.
  */
-public class Bankier implements Runnable{
+public class Bankier implements Runnable {
     private Bank bank;
     private Random random = new Random();
 
@@ -13,12 +13,11 @@ public class Bankier implements Runnable{
         this.bank = bank;
     }
 
-    public void run(){
-        while (!Thread.currentThread().isInterrupted()){
+    public void run() {
+        while (!Thread.currentThread().isInterrupted()) {
             int amount = random.nextInt(1000) + 1;
             boolean direction = random.nextBoolean();
             bank.transfer(direction, amount);
         }
     }
-
 }
