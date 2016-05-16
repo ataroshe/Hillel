@@ -5,10 +5,7 @@ import inheritance.hierarce.Manager;
 import inheritance.hierarce.Person;
 import multithreading.bank.Bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by MBCNEWMAIN on 06.05.2016.
@@ -56,6 +53,9 @@ public class GenericsMain {
 
         List<Employee> employees1 = copy(managers);
 
+        fire(Collections.singletonList(employee));
+        fire(Collections.emptyList());
+        fire(Collections.<Employee>emptyList()); //esli nugen Generic
 
     }
     //так не работает
@@ -64,6 +64,8 @@ public class GenericsMain {
 //            System.out.println(employee.getName() + " is fired");
 //        }
 //    }
+
+
 
 
     public static void fire(List<? extends Employee> employees){
