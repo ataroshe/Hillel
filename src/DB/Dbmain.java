@@ -83,6 +83,51 @@ public class DbMain {
         return result;
     }
 
+    public void updatePriceByName(String name, int price) throws SQLException {
+        String sql = "UPDATE product SET price = ? WHERE name = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1, price);
+        statement.setString(2, name);
+
+
+        int rowsUpdated = statement.executeUpdate();
+        System.out.println("Updated " + rowsUpdated + " raws");
+        statement.close();
+
+    }
+
+    public void createProduct(Product product) throws SQLException {
+        String sql = "INSERT INTO product (id, name, category, price)" + "VALUES (?, ?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1, product.getId());
+        statement.setString(2, product.getName());
+        statement.setString(3, product.getCategory());
+        statement.setInt(4, product.getPrice());
+
+        int rowsInserted =  statement.executeUpdate();
+        if (rowsInserted!=0) {
+            System.out.println("Raw inserted");
+        }
+        else {
+            System.out.println("WARNING: Alarm!!!");
+        }
+        statement.close();
+    }
+
+    public void deleteById(int id) throws SQLException {
+        String sql = "DELETE FROM product WHERE id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1, id);
+
+        int rowsDeleted =  statement.executeUpdate();
+        System.out.println("Raw deleted");
+
+        statement.close();
+    }
+
     public static void main(String[] args) throws Exception {
         System.setProperty("jdbc.drivers", "org.postgresql.Driver");
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
@@ -92,6 +137,13 @@ public class DbMain {
         System.out.println(nameAndPrice);
         System.out.println(main.findAllProducts());
         System.out.println(main.findById(3));
+
+        main.updatePriceByName("Elephant", 9_999_999);
+
+//        закоменчено т.к. добавлять по primary id можно раз
+//        main.create(new Product(5, "Giraffe", "African animal", 24_000));
+
+        main.deleteById(5);
 
         connection.close();
     }
