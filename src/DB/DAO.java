@@ -3,7 +3,7 @@ package DB;
 import java.util.List;
 
 /**
- * Created by User on 23.05.2016.
+ * Created by MBCNEWMAIN on 23.05.2016.
  */
 public interface DAO<T> {
     boolean create(T product);

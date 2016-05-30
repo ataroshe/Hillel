@@ -1,7 +1,7 @@
 package DB;
 
 /**
- * Created by User on 16.05.2016.
+ * Created by MBCNEWMAIN on 16.05.2016.
  */
 public class Product {
     private int id;
