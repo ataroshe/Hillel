@@ -1,5 +1,6 @@
 package pattern.factory;
 
+import enums.PizzaType;
 import pattern.factory.factory.PizzaFactory;
 import pattern.factory.pizza.Pizza;
 
@@ -14,7 +15,7 @@ public class PizzaStore {
         PizzaFactory = pizzaFactory;
     }
 
-    public Pizza order(String type){
+    public Pizza order(PizzaType type){
 
         Pizza pizza = PizzaFactory.createPizza(type);
 
