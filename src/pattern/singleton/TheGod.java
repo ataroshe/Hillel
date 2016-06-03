@@ -5,17 +5,12 @@ package pattern.singleton;
  */
 public class TheGod implements God {
 
-    private static TheGod instance;
+    private static class Holder {
+        static TheGod instance = new TheGod();
+    }
 
     public static TheGod getInstance() {
-        if (instance == null) {
-            synchronized (TheGod.class) {
-                if (instance == null) {
-                    instance = new TheGod();
-                }
-            }
-        }
-        return instance;
+     return Holder.instance;
     }
 
     private TheGod() {
@@ -42,7 +37,7 @@ public class TheGod implements God {
         System.out.println("Jesus");
     }
 
-    public static void clear() {
-        instance = null;
-    }
+//    public static void clear() {
+//        instance = null;
+//    }
 }
