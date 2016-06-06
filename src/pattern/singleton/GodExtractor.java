@@ -5,10 +5,10 @@ package pattern.singleton;
  */
 public class GodExtractor implements Runnable {
 
-    TheGod god;
+    TheGodSingleton god;
 
     @Override
     public void run() {
-        god = TheGod.getInstance();
+        god = TheGodSingleton.getInstance();
     }
 }

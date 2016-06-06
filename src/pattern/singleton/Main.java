@@ -6,8 +6,8 @@ package pattern.singleton;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        TheGod god1;
-        TheGod god2;
+        TheGodSingleton god1;
+        TheGodSingleton god2;
         int i = 0;
 
         do {
@@ -22,7 +22,7 @@ public class Main {
             god1 = extractor1.god;
             god2 = extractor2.god;
             i++;
-            TheGod.clear();
+            //TheGodSingleton.clear();
         } while (god1 == god2);
 
         System.out.println("Heretic! attempts: " + i);
@@ -32,7 +32,7 @@ public class Main {
 
     private static void lazyExample() throws InterruptedException {
         System.out.println("Many time....");
-        TheGod.prophet();
+        TheGodSingleton.prophet();
         Thread.sleep(3000);
 
         if (Math.random()<0.5){
@@ -40,13 +40,13 @@ public class Main {
         }
         System.out.println("using this instance");
 
-        God theGod1 = TheGod.getInstance();
-        God theGod2 = TheGod.getInstance();
-        God theGod3 = TheGod.getInstance();
+        God theGod1 = TheGodSingleton.getInstance();
+        God theGod2 = TheGodSingleton.getInstance();
+        God theGod3 = TheGodSingleton.getInstance();
     }
 
     private static void commonReligiousQuestions() {
-        God theGod = TheGod.getInstance();
+        God theGod = TheGodSingleton.getInstance();
         God krishna = new Krishna();
 
         Beliver.god = theGod;

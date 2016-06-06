@@ -3,17 +3,17 @@ package pattern.singleton;
 /**
  * Created by User on 03.06.2016.
  */
-public class TheGod implements God {
+public class TheGodSingleton implements God {
 
     private static class Holder {
-        static TheGod instance = new TheGod();
+        static TheGodSingleton instance = new TheGodSingleton();
     }
 
-    public static TheGod getInstance() {
+    public static TheGodSingleton getInstance() {
      return Holder.instance;
     }
 
-    private TheGod() {
+    private TheGodSingleton() {
         System.out.println("God had always been here!");
     }
 
