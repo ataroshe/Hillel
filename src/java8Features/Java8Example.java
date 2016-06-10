@@ -3,13 +3,11 @@ package java8Features;
 import pattern.singleton.God;
 import pattern.singleton.TheGodSingleton;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 /**
  * Created by User on 06.06.2016.
@@ -25,6 +23,60 @@ public class Java8Example {
         apples.add(new Apple(100, "Green", 11));
         apples.add(new Apple(250, "Yellow", 15));
 
+
+    }
+
+    private static void optionalAndClosure() {
+    /* Optional.empty().get();
+     System.out.println("get on empty optional completed");*/
+
+        Optional<String> someString = generate();
+
+        if (someString.isPresent()){
+            System.out.println(someString.get());
+        }
+
+        someString.ifPresent(System.out::println);
+
+        final String message = " this is closure";
+        someString.ifPresent(s -> System.out.println(s + message));
+    }
+
+    private static void optionalWithFlatMap() {
+        House house = new House();
+        Optional<Passport> mightBePassport =
+                house.getFlat()
+                .flatMap(Flat::getCitizaen)
+                .flatMap(Citizaen::getPassport);
+    }
+
+    static Optional<String> generate(){
+        if(Math.random() < 0.65){
+            return Optional.of("asd");
+        }
+        else {
+            return Optional.empty();
+        }
+    }
+
+    private static void functionsComposition() {
+        String message = "My name is Eugene, I use java";
+
+        Function<String, String> header = m -> "Hello, " + m;
+        Function<String, String> corrector = m -> m.replace("java", "Java 8");
+        Function<String, String> footer = m -> m + ". Bye";
+
+        Function<String, String> textProcessor = header.andThen(corrector).andThen(footer);
+        textProcessor = footer.compose(corrector).compose(header);
+
+
+        //message = footer.apply(corrector.apply(header.apply(message)));
+        message = textProcessor.apply(message);
+
+        System.out.println(message);
+    }
+
+    private static void functionExample(List<Apple> apples) {
         print(apples, apple -> String.valueOf(apple.getPrice()));
 
         Function<Apple, String> appleStringFunction = apple -> apple.getColor();
@@ -67,15 +119,18 @@ public class Java8Example {
     }
 
     private static void defaultSortExample(List<Apple> apples) {
-        Comparator<Apple> byColor = new Comparator<Apple>() {
-            @Override
-            public int compare(Apple o1, Apple o2) {
-                return o1.getColor().compareTo(o2.getColor());
-            }
-        };
 
-        Collections.sort(apples, byColor);
-        apples.sort(byColor);
+        Comparator<Apple> byColor = (o1, o2) -> o1.getColor().compareTo(o2.getColor());
+        byColor = Comparator.comparing(Apple::getColor);
+        Comparator<Apple> byColorReversed = byColor.reversed();
+
+        Comparator<Apple> byWeight = (o1, o2) -> Integer.compare(o1.getWeight(), o2.getWeight());
+        byWeight = Comparator.comparingInt(Apple::getWeight);
+
+        Comparator<Apple> byColorDescAndWeight = byColorReversed.thenComparing(byWeight);
+
+        //Collections.sort(apples, byColor); - устаревший.
+        apples.sort(byColorDescAndWeight);
 
         System.out.println(apples);
     }
